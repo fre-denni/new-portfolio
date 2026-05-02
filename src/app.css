@@ -1,4 +1,35 @@
+/*** 
+- ---- ---- ---- ---- ---- ---- ---- -
+                 FONTS
+- ---- ---- ---- ---- ---- ---- ---- -
+***/
+
+@font-face {
+  font-display: swap;
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local("Instrument Sans"),
+    url("/assets/fonts/instrument-sans-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fafo Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/assets/fonts/fafo-sans-bold.woff2") format("woff2");
+}
+
+/*** 
+- ---- ---- ---- ---- ---- ---- ---- -
+            DESIGN TOKENS
+- ---- ---- ---- ---- ---- ---- ---- -
+***/
+
 :root {
+  /* COLORS */
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -49,3 +80,15 @@
     filter: invert(1) brightness(2);
   }
 }
+
+/*** 
+- ---- ---- ---- ---- ---- ---- ---- -
+              TYPOGRAPHY
+- ---- ---- ---- ---- ---- ---- ---- -
+***/
+
+/*** 
+- ---- ---- ---- ---- ---- ---- ---- -
+                 BASE
+- ---- ---- ---- ---- ---- ---- ---- -
+***/
