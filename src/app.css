@@ -19,7 +19,9 @@
   font-family: "Fafo Sans";
   font-style: normal;
   font-weight: 600;
-  src: url("/assets/fonts/fafo-sans-bold.woff2") format("woff2");
+  src:
+    local("Fafo Sans"),
+    url("/assets/fonts/fafo-sans-bold.woff2") format("woff2");
 }
 
 /*** 
