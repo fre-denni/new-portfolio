@@ -6,6 +6,6 @@ New portfolio website
 
 - [ ] add are.na api collection
 - [ ] connect gdoc to archieml parser
-- [ ] add fonts
+- [x] add fonts
 - [x] github serve and host
   - [x] connect domain to github
