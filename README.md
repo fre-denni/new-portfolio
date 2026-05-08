@@ -4,19 +4,18 @@ New portfolio website.
 
 #### to-do
 
-SETUP
+##### SETUP
 
 - [x] fill with basic sketches and structure
 - [ ] add basic values and styles
-- [ ] connect gdoc to archieml parser
-  - [ ] add interpreter for changing content
-  - [ ] fill content
+- [x] archieml: add interpreter for changing content
+- [x] archieml: fill content
 - [ ] setup canvas with sketches
 - [x] add fonts
 - [x] github serve and host
   - [x] connect domain to github
 
-DATA FETCHING
+##### DATA FETCHING
 
 - [ ] add are.na api collection
 - [ ] clean and display data
@@ -32,7 +31,7 @@ DATA FETCHING
     - [ ] ch
   - [ ] set up aria-labels everywhere
 
-DISPLAYS
+##### DISPLAYS
 
 - [ ] create components
   - [ ] header
@@ -46,3 +45,7 @@ DISPLAYS
 - [ ] SEO
   - [ ] JSON + LD
   - [ ] og-image
+
+##### NICE TO HAVE
+
+- [ ] connect gdoc to archieml parser
