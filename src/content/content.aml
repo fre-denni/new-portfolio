@@ -1,5 +1,16 @@
 {it}
-prova: Federico Denni è un designer
-
+payoff: Federico Denni è un piccolo studio di design di 183 cm dall’Italia.
+Servizi includono la progettazione di data visualisation e data stories, web experiences e installazioni interattive
+Aperto per lavoro dalle 8 del mattino alle 8 di sera ogni giorno, esclusi finesettimana.
+:end
+action: Prenota un incontro
+url: mailto:fredenni@pm.me?subject=Proposta%20di%20progetto&body=Ciao!
+{}
 {en}
-prova: Federico Denni is a designer
+payoff: Federico Denni is a small design studio of 183cm from Italy. 
+Services includes design creative data visualization and stories, web experiences and interactive installations.
+Open to work from 8am to 8pm every day, excluding weekends. 
+:end
+action: Book a meeting
+url: mailto:fredenni@pm.me?subject=Inquire%20about%20project&body=Hello!
+{}
