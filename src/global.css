@@ -1,4 +1,5 @@
-/*FONTS*/
+/*---------------------------------------------------*/
+/* FONTS */
 @font-face {
   font-display: swap;
   font-family: "Instrument Sans VF";
@@ -9,6 +10,7 @@
     url("/assets/font/instrument-sans.woff2") format("woff2") tech(variations);
 }
 
+/* FALLBACKS */
 @font-face {
   font-display: swap;
   font-family: "Instrument Sans FB";
@@ -27,16 +29,19 @@
     format("woff2");
 }
 
-:root {
-  /*VARIABLES*/
+/*---------------------------------------------------*/
 
-  /* COLORS */
+:root {
+  /* GENERAL */
   --text-body: hsla(0, 0%, 17%, 1);
   --text-accent: hsla(0, 0%, 56%, 1);
   --bg: hsla(0, 0%, 100%, 1);
   --bg-contrast: hsla(0, 0%, 98%, 1);
+
+  /* BOTTON */
   --btn-fill: hsla(0, 0%, 17%, 1);
   --btn-border: hsla(0, 0%, 17%, 1);
+  --btn-text: hsla(0, 0%, 100%, 1);
 
   /* ICONS */
   --icon-gold: hsla(46, 100%, 37%, 1);
@@ -80,6 +85,8 @@
   }
 }
 
+/*---------------------------------------------------*/
+
 /* TYPOGRAPHY */
 body {
   letter-spacing: -0.01em;
@@ -97,6 +104,11 @@ a {
 
 a:hover {
   color: var(--icon-border-blue);
+}
+
+.btn-text {
+  font-size: 0.8rem;
+  color: var(--btn-text);
 }
 
 .text-title {

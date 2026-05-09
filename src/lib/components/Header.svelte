@@ -14,6 +14,7 @@
 <style>
   .payoff-text {
     white-space: pre-wrap;
+    text-wrap: balance;
   }
   /***Mobile**/
   /***Desktop**/
