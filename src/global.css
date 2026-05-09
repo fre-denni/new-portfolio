@@ -1,0 +1,104 @@
+/*FONTS*/
+@font-face {
+  font-display: swap;
+  font-family: "Instrument Sans VF";
+  font-style: normal;
+  font-weight: 400 600;
+  src:
+    local("Instrument Sans"),
+    url("/assets/font/instrument-sans.woff2") format("woff2") tech(variations);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Instrument Sans FB";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Instrument Sans")
+    url("/assets/font/instrument-sans-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Instrument Sans Sb FB";
+  font-style: normal;
+  font-weight: 600;
+  src: local ("Instrument Sans") url("/assets/font/instrument-sans-smb.woff2")
+    format("woff2");
+}
+
+:root {
+  /*VARIABLES*/
+
+  /* COLORS */
+  --text-body: hsla(0, 0%, 17%, 1);
+  --text-h: hsla(0, 0%, 56%, 1);
+  --bg: hsla(0, 0%, 100%, 1);
+  --bg-contrast: hsla(0, 0%, 98%, 1);
+  --btn-fill: hsla(0, 0%, 17%, 1);
+  --btn-border: hsla(0, 0%, 17%, 1);
+
+  /* ICONS */
+  --icon-gold: hsla(46, 100%, 37%, 1);
+  --icon-border-gold: hsla(46, 100%, 50%, 1);
+  --icon-blue: hsla(213, 48%, 45%, 1);
+  --icon-border-blue: hsla(214, 80%, 67%, 1);
+  --icon-liliac: hsla(254, 15%, 53%, 1);
+  --icon-border-liliac: hsla(255, 100%, 85%, 1);
+  --icon-rust: hsla(0, 38%, 46%, 1);
+  --icon-border-rust: hsla(1, 83%, 73%, 1);
+
+  /* IMAGES */
+  --img-border: hsla(0, 0%, 17%, 0.1);
+
+  /* FONT */
+  --sans: "Instrument Sans FB", system-ui, Arial, Helvetica, sans-serif;
+  @supports (font-variation-settings: normal) {
+    --sans: "Instrument Sans VF", system-ui, Arial, Helvetica, sans-serif;
+  }
+
+  font: 400 17.5px/113% var(--sans);
+  color: var(--text-body);
+  background: var(--bg);
+  font-synthesis: none;
+  font-variant-numeric: tabular-nums;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-body: hsla(0, 0%, 98%, 1);
+    --text-h: hsla(0, 0%, 56%, 1);
+    --bg: hsla(20, 6%, 10%, 1);
+    --bg-contrast: hsla(0, 0%, 24%, 1);
+    --btn-fill: hsla(0, 0%, 17%, 1);
+    --btn-border: hsla(0, 0%, 40%, 1);
+  }
+}
+
+/* TYPOGRAPHY */
+
+a {
+  color: var(--text-h);
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
+a:hover {
+  color: var(--icon-border-blue);
+}
+
+.text-title {
+  color: var(--text-h);
+}
+
+.text-header {
+  font-weight: 600;
+}
