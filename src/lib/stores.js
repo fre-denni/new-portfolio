@@ -1,5 +1,8 @@
+import { writable } from "svelte/store";
+
 //dark and light mode
 
 //language
-import { writable } from "svelte/store";
+
+// -- default
 export const lang = writable("it");
