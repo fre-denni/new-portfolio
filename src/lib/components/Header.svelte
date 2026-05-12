@@ -12,6 +12,9 @@
 </header>
 
 <style>
+  header {
+    background-color: var(--bg-contrast);
+  }
   .payoff-text {
     white-space: pre-wrap;
     text-wrap: balance;
