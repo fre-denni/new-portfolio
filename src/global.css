@@ -38,6 +38,8 @@
   --bg: hsla(0, 0%, 100%, 1);
   --bg-contrast: hsla(0, 0%, 98%, 1);
 
+  background: var(--bg);
+
   /* BOTTON */
   --btn-fill: hsla(0, 0%, 17%, 1);
   --btn-border: hsla(0, 0%, 17%, 1);
@@ -53,6 +55,24 @@
   --icon-rust: hsla(0, 38%, 46%, 1);
   --icon-border-rust: hsla(1, 83%, 73%, 1);
 
+  /* SPACES */
+  /* Space 3xs-2xs: 4px → 9px */
+  --space-3xs-2xs: clamp(0.25rem, 0.1779rem + 0.3205vw, 0.5625rem);
+  /* Space 2xs-xs: 9px → 13px */
+  --space-2xs-xs: clamp(0.5625rem, 0.5048rem + 0.2564vw, 0.8125rem);
+  /* Space xs-s: 13px → 18px */
+  --space-xs-s: clamp(0.8125rem, 0.7404rem + 0.3205vw, 1.125rem);
+  /* Space s-m: 18px → 26px */
+  --space-s-m: clamp(1.125rem, 1.0096rem + 0.5128vw, 1.625rem);
+  /* Space m-l: 26px → 35px */
+  --space-m-l: clamp(1.625rem, 1.4952rem + 0.5769vw, 2.1875rem);
+  /* Space l-xl: 35px → 53px */
+  --space-l-xl: clamp(2.1875rem, 1.9279rem + 1.1538vw, 3.3125rem);
+  /* Space xl-2xl: 53px → 70px */
+  --space-xl-2xl: clamp(3.3125rem, 3.0673rem + 1.0897vw, 4.375rem);
+  /* Space 2xl-3xl: 70px → 105px */
+  --space-2xl-3xl: clamp(4.375rem, 3.8702rem + 2.2436vw, 6.5625rem);
+
   /* IMAGES */
   --img-border: hsla(0, 0%, 17%, 0.1);
 
@@ -62,10 +82,11 @@
     --sans: "Instrument Sans VF", system-ui, Arial, Helvetica, sans-serif;
   }
 
-  font: 400 17.5px var(--sans);
-  line-height: 1.44;
+  font: 400 14px var(--sans);
+  /*From 17.5px to 22px */
+  --font-size: clamp(1.0938rem, 1.0288rem + 0.2885vw, 1.375rem);
   color: var(--text-body);
-  background: var(--bg);
+
   font-synthesis: none;
   font-variant-numeric: tabular-nums;
   text-rendering: optimizeLegibility;
@@ -87,8 +108,28 @@
 
 html,
 body {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+div,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  white-space: pre-wrap;
+  text-wrap: balance;
 }
 
 /*---------------------------------------------------*/
@@ -96,6 +137,7 @@ body {
 /* TYPOGRAPHY */
 body {
   letter-spacing: -0.01em;
+  font-size: var(--font-size);
 }
 
 a {
@@ -112,15 +154,21 @@ a:hover {
   color: var(--icon-border-blue);
 }
 
-.btn-text {
-  font-size: 0.8rem;
+.text-btn-rg {
+  font-size: 1rem;
   color: var(--btn-text);
 }
 
-.text-title {
-  color: var(--text-accent);
+.text-body-rg {
+  margin-bottom: var(--space-3xs-2xs);
 }
 
-.text-header {
+.text-title-rg {
+  color: var(--text-accent);
+  margin-bottom: var(--space-s-m);
+}
+
+.text-title-smb {
   font-weight: 600;
+  margin-bottom: var(--space-s-m);
 }
