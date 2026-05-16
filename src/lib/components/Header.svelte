@@ -4,8 +4,8 @@
 </script>
 
 <header>
-  <p class="text-header">Federico Denni</p>
-  <p class="payoff-text">
+  <p class="text-title-smb">Federico Denni</p>
+  <p class="text-body-rg">
     {payoffContent}
     <span><a href={url}>{action}</a></span>
   </p>
@@ -14,10 +14,6 @@
 <style>
   header {
     background-color: var(--bg-contrast);
-  }
-  .payoff-text {
-    white-space: pre-wrap;
-    text-wrap: balance;
   }
   /***Mobile**/
   /***Desktop**/
