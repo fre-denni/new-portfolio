@@ -1,3 +1,14 @@
-<script></script>
+<script>
+  //add random slight rotation (once)
+  //animation when hovering
+  //communicate hovering/clicking/selection
+  //list of styles
+  let { icon, ...props } = $props();
+</script>
 
-<style></style>
+<div class="icon" {...props}>
+  {icon}
+</div>
+
+<style>
+</style>
