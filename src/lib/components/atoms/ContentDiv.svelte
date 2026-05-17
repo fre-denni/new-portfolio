@@ -1,6 +1,6 @@
 <script>
   //content-prop
-  let { children, header, subheader = null } = $props();
+  let { children, header = null, subheader = null } = $props();
 </script>
 
 <div class="grid">
@@ -16,7 +16,7 @@
       {/if}
     </header>
   {/if}
-  <div class="content">
+  <div class="content" style:grid-row={header ? "2 / span 1" : "1 / span 1"}>
     {@render children()}
   </div>
 </div>
