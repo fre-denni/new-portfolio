@@ -1,7 +1,5 @@
 {it}
-[.blocks]
-  type: header
-
+[.header]
   type: content
   title: Federico Denni is a
   subtitle: Creative Technologist
@@ -11,18 +9,24 @@
   type: content
   text: Adesso sta provando a realizzare il suo sito web, mentre lavora alla tesi di dottorato. Ci riuscirà?
 []
+[.feed]
+[]
+[.footer]
+[]
 {}
 
 {en}
 [.blocks]
-  type: header
-  title: Federico Denni is a
-  subtitle: Creative Technologist
 
   type: content
-  title: About me
+  title: Federico Denni is a
+  subtitle: Creative Technologist
   text: Federico Denni is a small design studio of 183cm from Italy. Services includes design creative data visualization...
   action: Book a meeting
   url: mailto:fredenni@pm.me?subject=Inquire%20about%20project&body=Hello!
+[]
+[.feed]
+[]
+[.footer]
 []
 {}

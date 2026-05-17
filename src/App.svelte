@@ -18,9 +18,9 @@
 </script>
 
 {#if content}
-  <Header blocks={content.blocks} />
-  <Feed />
-  <Footer />
+  <Header blocks={content.header} />
+  <Feed blocks={content.feed} />
+  <Footer blocks={content.footer} />
 {/if}
 
 <style>
