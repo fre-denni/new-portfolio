@@ -3,11 +3,15 @@
   type: content
   title: Federico Denni is a
   subtitle: Creative Technologist
-  text: I work across interfaces and brand to create holistic systems and experiences that intuitively become an extension of oneself. I believe in ideas over opinions and exploring one hundred ideas to find the right one.
+  text: Federico Denni is a small design studio of 183 cm from Italy. His services includes data visualisations, interactive installations and web design with design systems. Open to work from 8am to 8pm every day, excluding weekends.
+  :end
+  action: Want to chat?
   url: mailto:fredenni@pm.me?subject=Proposta%20di%20progetto&body=Ciao!
   
   type: content
-  text: Adesso sta provando a realizzare il suo sito web, mentre lavora alla tesi di dottorato. Ci riuscirà?
+  text: You are looking at a W.I.P. website, an exercise in the exploration of feeds (in this case my portfolio), handmade designed with love and Svelte 5.
+  action: Here some of my work, while you wait.
+  url: https://www.are.na/federico-denni/guasconate
 []
 [.feed]
 []
