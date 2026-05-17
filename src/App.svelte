@@ -2,30 +2,26 @@
   // @ts-nocheck
 
   //added components
-  import Header from "./lib/components/Header.svelte";
-  import Feed from "./lib/components/Feed.svelte";
-  import Footer from "./lib/components/Footer.svelte";
+  import Header from "./lib/components/sections/Header.svelte";
+  import Feed from "./lib/components/sections/Feed.svelte";
+  import Footer from "./lib/components/sections/Footer.svelte";
+  //import BlockContent from "./lib/components/blocks/BlockContent.svelte";
 
   //import content
   import { loadContent } from "./lib/services/content";
-  const data = loadContent();
-
   //import store
-  import { lang } from "./lib/stores";
   //import {mode} from ".lib/stores";
+  import { lang } from "./lib/stores";
 
-  $: content = data[$lang];
+  const data = loadContent();
+  let content = $derived(data[$lang]);
 </script>
 
-<Header
-  title={content.title}
-  subtitle={content.subtitle}
-  text={content.payoff}
-  action={content.action}
-  url={content.url}
-/>
-<Feed />
-<Footer />
+{#if content}
+  <Header blocks={content.blocks} />
+  <Feed />
+  <Footer />
+{/if}
 
 <style>
   @import "./global.css";

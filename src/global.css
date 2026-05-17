@@ -131,7 +131,7 @@ span {
 
 p {
   white-space: pre-wrap;
-  text-wrap: balance;
+  text-wrap: auto;
 }
 
 /*---------------------------------------------------*/
