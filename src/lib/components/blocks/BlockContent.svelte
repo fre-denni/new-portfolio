@@ -17,7 +17,7 @@
   <p class="text-body-rg">
     {text}
     {#if url}
-      <span><a href={url}>{action}</a></span>
+      <span><a href={url} target="_blank">{action}</a></span>
     {/if}
   </p>
 </ContentDiv>
