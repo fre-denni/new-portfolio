@@ -18,7 +18,9 @@
 </script>
 
 <Header
-  payoffContent={content.payoff}
+  title={content.title}
+  subtitle={content.subtitle}
+  text={content.payoff}
   action={content.action}
   url={content.url}
 />
