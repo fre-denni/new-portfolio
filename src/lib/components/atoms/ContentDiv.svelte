@@ -47,7 +47,7 @@
     align-items: flex-start;
     padding: 0 var(--space-3xs-2xs);
     gap: var(--space-4xs-3xs);
-    margin-bottom: var(--space-2xs-s);
+    margin-bottom: var(--space-2xs-xs);
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
     justify-self: stretch;
