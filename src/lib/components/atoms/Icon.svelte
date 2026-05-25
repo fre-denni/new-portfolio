@@ -3,12 +3,19 @@
   //animation when hovering
   //communicate hovering/clicking/selection
   //list of styles
-  let { icon, ...props } = $props();
+  let { children, ...props } = $props();
 </script>
 
 <div class="icon" {...props}>
-  {icon}
+  {@render children()}
 </div>
 
 <style>
+  .icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+  }
 </style>

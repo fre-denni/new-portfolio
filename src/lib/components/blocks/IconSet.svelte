@@ -5,11 +5,7 @@
 </script>
 
 <div class="container">
-  <div class="icons">
-    <div class="icon" {...props}>
-      <object data={src} type="image/svg+xml" aria-label={label}></object>
-    </div>
-  </div>
+  <div class="icons"></div>
 </div>
 
 <style>
