@@ -7,9 +7,6 @@ import IconSet from "../components/blocks/IconSet.svelte";
 export const components = {
   content: BlockContent,
   icons: IconSet,
-
-  //then add OptionBlock;
   //Photoprofiles
-  //Iconset
   //Badges
 };

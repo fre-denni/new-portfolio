@@ -9,13 +9,3 @@
 <svg {...props}>
   {@html children}
 </svg>
-
-<style>
-  .icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-self: stretch;
-  }
-</style>
