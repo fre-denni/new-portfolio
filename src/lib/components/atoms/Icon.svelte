@@ -6,9 +6,9 @@
   let { children, ...props } = $props();
 </script>
 
-<div class="icon" {...props}>
-  {@render children()}
-</div>
+<svg {...props}>
+  {@html children}
+</svg>
 
 <style>
   .icon {
