@@ -5,7 +5,6 @@
   import Header from "./lib/components/sections/Header.svelte";
   import Feed from "./lib/components/sections/Feed.svelte";
   import Footer from "./lib/components/sections/Footer.svelte";
-  //import BlockContent from "./lib/components/blocks/BlockContent.svelte";
 
   //import content
   import { loadContent } from "./lib/services/content";
