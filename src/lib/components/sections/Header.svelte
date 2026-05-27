@@ -2,7 +2,6 @@
   // @ts-nocheck
   import Options from "../blocks/Options.svelte";
   import { components } from "../../services/library";
-  import IconSet from "../blocks/IconSet.svelte";
   //props and content
   let { blocks = [] } = $props();
 
