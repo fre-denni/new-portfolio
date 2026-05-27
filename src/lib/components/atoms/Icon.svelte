@@ -1,11 +1,9 @@
 <script>
-  //add random slight rotation (once)
-  //animation when hovering
-  //communicate hovering/clicking/selection
-  //list of styles
-  let { children, ...props } = $props();
+  //used in the config for setup a custom icon compiler
+  //unplugin-icons library
+  let { content, ...props } = $props();
 </script>
 
 <svg {...props}>
-  {@html children}
+  {@html content}
 </svg>
