@@ -2,14 +2,14 @@
   import SkillIcon from "./SkillIcon.svelte";
 
   //content-prop
-  let { children, header = null, subheader = null, icons } = $props();
+  let { children, header = null, subheader = null, icons = null } = $props();
 </script>
 
 <div class="grid">
   {#if header}
     <header>
       {#each icons as icon}
-        <SkillIcon />
+        <SkillIcon style={icon.style} />
       {/each}
       <span class={subheader ? "text-title-smb" : "text-title-rg"}>
         {@render header()}
