@@ -45,16 +45,6 @@
   --btn-border: hsla(0, 0%, 17%, 1);
   --btn-text: hsla(0, 0%, 100%, 1);
 
-  /* ICONS */
-  --icon-gold: hsla(46, 100%, 37%, 1);
-  --icon-border-gold: hsla(46, 100%, 50%, 1);
-  --icon-blue: hsla(213, 48%, 45%, 1);
-  --icon-border-blue: hsla(214, 80%, 67%, 1);
-  --icon-liliac: hsla(254, 15%, 53%, 1);
-  --icon-border-liliac: hsla(255, 100%, 85%, 1);
-  --icon-rust: hsla(0, 38%, 46%, 1);
-  --icon-border-rust: hsla(1, 83%, 73%, 1);
-
   /* SPACES */
   /* Space 4xs-3xs: 2px → 4px */
   --space-4xs-3xs: clamp(0.125rem, 0.0739rem + 0.2273vw, 0.25rem);
@@ -152,7 +142,7 @@ a {
 }
 
 a:hover {
-  color: var(--icon-border-blue);
+  color: var(--text-body);
 }
 
 .text-btn-rg {
