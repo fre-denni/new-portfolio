@@ -2,15 +2,17 @@
   import SkillIcon from "./SkillIcon.svelte";
 
   //content-prop
-  let { children, header = null, subheader = null, icons = null } = $props();
+  let { children, header = null, subheader = null, iconList = [] } = $props();
+
+  //if subheader si: mostrale, if not non mostrarle
 </script>
 
 <div class="grid">
   {#if header}
     <header>
-      {#each icons as icon}
-        <SkillIcon style={icon.style} />
-      {/each}
+      {#if iconList.length > 0}
+        <SkillIcon items={iconList} />
+      {/if}
       <span class={subheader ? "text-title-smb" : "text-title-rg"}>
         {@render header()}
       </span>

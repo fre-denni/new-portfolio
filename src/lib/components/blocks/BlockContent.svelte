@@ -1,6 +1,10 @@
 <script>
   import ContentDiv from "../atoms/ContentDiv.svelte";
   let { title, subtitle, text, url, action, skills } = $props();
+  let iconArray = $derived(
+    // @ts-ignore
+    skills ? skills.split(",").map((s) => s.trim()) : [],
+  );
 </script>
 
 {#snippet header()}
@@ -9,14 +13,11 @@
 {#snippet subheader()}
   {subtitle}
 {/snippet}
-{#snippet icons()}
-  {skills}
-{/snippet}
 
 <ContentDiv
   header={title ? header : null}
   subheader={subtitle ? subheader : null}
-  icons={skills ? icons : null}
+  iconList={iconArray}
 >
   <p class="text-body-rg">
     {text}
