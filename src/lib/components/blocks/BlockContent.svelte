@@ -1,28 +1,25 @@
 <script>
   import ContentDiv from "../atoms/ContentDiv.svelte";
-  let { title, subtitle, text, url, action, skills } = $props();
-  let iconArray = $derived(
-    // @ts-ignore
-    skills ? skills.split(",").map((s) => s.trim()) : [],
-  );
+
+  let { title, subtitle, text, url, action, skills = [] } = $props();
 </script>
 
-{#snippet header()}
+{#snippet myHeader()}
   {title}
 {/snippet}
-{#snippet subheader()}
+{#snippet mySubheader()}
   {subtitle}
 {/snippet}
 
 <ContentDiv
-  header={title ? header : null}
-  subheader={subtitle ? subheader : null}
-  iconList={iconArray}
+  header={title ? myHeader : null}
+  subheader={subtitle ? mySubheader : null}
+  iconList={skills}
 >
   <p class="text-body-rg">
     {text}
     {#if url}
-      <span><a href={url} target="_blank">{action}</a></span>
+      <br /><span><a href={url} target="_blank">{action}</a></span>
     {/if}
   </p>
 </ContentDiv>
