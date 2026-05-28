@@ -35,8 +35,8 @@
   /* GENERAL */
   --text-body: hsla(0, 0%, 17%, 1);
   --text-accent: hsla(0, 0%, 56%, 1);
-  --bg: hsla(0, 0%, 100%, 1);
-  --bg-contrast: hsla(0, 0%, 98%, 1);
+  --bg: hsla(0, 0%, 98%, 1);
+  --bg-contrast: hsla(0, 0%, 90%, 1);
 
   background: var(--bg);
 
@@ -74,7 +74,7 @@
     --sans: "Instrument Sans VF", system-ui, Arial, Helvetica, sans-serif;
   }
 
-  font: 400 16px var(--sans);
+  font: 400 16pxqq var(--sans);
   /*From 14px to 16px */
   --font-size: clamp(0.875rem, 0.4234rem + 2.1505vw, 1rem);
   color: var(--text-body);
@@ -132,7 +132,7 @@ body {
 }
 
 a {
-  color: var(--text-h);
+  color: var(--text-accent);
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-skip-ink: auto;
