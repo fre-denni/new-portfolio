@@ -3,5 +3,7 @@ import raw from "../../content/content.aml?raw";
 
 //esporta e fai parsing con archieml
 export const loadContent = () => {
-  return archieml.load(raw);
+  let content = archieml.load(raw);
+  console.log(content);
+  return content;
 };
