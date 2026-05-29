@@ -74,7 +74,7 @@
     --sans: "Instrument Sans VF", system-ui, Arial, Helvetica, sans-serif;
   }
 
-  font: 400 16pxqq var(--sans);
+  font: 400 16px var(--sans);
   /*From 14px to 16px */
   --font-size: clamp(0.875rem, 0.4234rem + 2.1505vw, 1rem);
   color: var(--text-body);
