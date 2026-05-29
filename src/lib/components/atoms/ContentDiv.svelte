@@ -1,28 +1,61 @@
 <script>
+  //@ts-nocheck
+  import { onMount, onDestroy } from "svelte";
   import SkillIcon from "./SkillIcon.svelte";
 
-  //content-prop
-  let { children, header = null, subheader = null, iconList = [] } = $props();
+  let { children, header = null, subList = [], iconList = [] } = $props();
 
-  //if subheader si: mostrale, if not non mostrarle
+  let activeIndex = $state(0);
+  let interval;
+
+  // Funzione per l'hover manuale (ferma anche l'animazione automatica!)
+  function handleIconHovering(index) {
+    activeIndex = index;
+    stopCarousel(); // Se l'utente interagisce, fermiamo il carosello
+  }
+
+  function startCarousel() {
+    if (subList.length > 1) {
+      interval = setInterval(() => {
+        activeIndex = (activeIndex + 1) % subList.length;
+      }, 2500); // Cambia ogni 2.5 secondi
+    }
+  }
+
+  function stopCarousel() {
+    if (interval) clearInterval(interval);
+  }
+
+  // Facciamo partire il carosello quando il componente viene montato
+  $effect(() => {
+    startCarousel();
+    return () => stopCarousel(); // Pulizia quando smontato
+  });
 </script>
 
 <div class="grid">
   {#if header}
     <header>
       {#if iconList.length > 0}
-        <SkillIcon items={iconList} />
+        <SkillIcon
+          items={iconList}
+          {activeIndex}
+          onHover={handleIconHovering}
+        />
       {/if}
-      <span class={subheader ? "text-title-smb" : "text-title-rg"}>
+
+      <span class={subList.length > 0 ? "text-title-smb" : "text-title-rg"}>
         {@render header()}
       </span>
-      {#if subheader}
-        <span class="text-title-rg">
-          {@render subheader()}
+
+      {#if subList.length > 0 && subList[activeIndex]}
+        <span class="text-title-rg subheader-text">
+          {subList[activeIndex]}
         </span>
       {/if}
     </header>
   {/if}
+
   <div class="content" style:grid-row={header ? "2 / span 1" : "1 / span 1"}>
     {@render children()}
   </div>

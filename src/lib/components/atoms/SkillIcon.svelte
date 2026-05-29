@@ -1,10 +1,12 @@
 <script>
-  // @ts-nocheck
+  //@ts-nocheck
   import PhRobotBold from "~icons/ph/robot-bold";
   import PhCodeBold from "~icons/ph/code-bold";
   import PhPencilBold from "~icons/ph/pencil-bold";
   import PhGraduationCapBold from "~icons/ph/graduation-cap-bold";
-  let { items = [] } = $props();
+
+  // Riceviamo items, l'indice attivo e la callback
+  let { items = [], activeIndex = 0, onHover } = $props();
 
   const icons = {
     robot: PhRobotBold,
@@ -15,13 +17,18 @@
 </script>
 
 <div class="row">
-  {#each items as item}
+  {#each items as item, index}
     {@const Skill = icons[item]}
 
     {#if Skill}
-      <div class="sticker-wrapper icon-{item}">
+      <div
+        aria-hidden="true"
+        class="sticker-wrapper icon-{item} {activeIndex === index
+          ? 'active'
+          : ''}"
+        onmouseenter={() => onHover(index)}
+      >
         <Skill class="app-icon skill-bg" />
-
         <Skill class="app-icon skill-fg" />
       </div>
     {/if}
@@ -31,7 +38,7 @@
 <style>
   .row {
     display: flex;
-    gap: var(--space-2xs-xs);
+    gap: var(--space-xs-s);
     align-items: center;
     padding-bottom: var(--space-2xs-xs);
 
@@ -50,7 +57,7 @@
 
     /* VARIABILI DIMENSIONI */
     --icon-stroke-width: clamp(3.5rem, 3.2955rem + 0.9091vw, 4rem);
-    --icon-width: clamp(0.875rem, 0.5938rem + 1.25vw, 1.5625rem);
+    --icon-width: clamp(1.5rem, 1.3977rem + 0.4545vw, 1.75rem);
   }
 
   .sticker-wrapper {
@@ -73,6 +80,11 @@
   }
 
   .sticker-wrapper:hover {
+    transform: scale(1.15) rotate(0deg);
+    z-index: 10;
+  }
+
+  .sticker-wrapper.active {
     transform: scale(1.15) rotate(0deg);
     z-index: 10;
   }

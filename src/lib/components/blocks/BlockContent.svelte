@@ -1,19 +1,19 @@
 <script>
   import ContentDiv from "../atoms/ContentDiv.svelte";
 
-  let { title, subtitle, text, url, action, skills = [] } = $props();
+  let { title, subtitle = [], text, url, action, skills = [] } = $props();
 </script>
 
 {#snippet myHeader()}
   {title}
 {/snippet}
-{#snippet mySubheader()}
+<!-- {#snippet mySubheader()}
   {subtitle}
-{/snippet}
+{/snippet} -->
 
 <ContentDiv
   header={title ? myHeader : null}
-  subheader={subtitle ? mySubheader : null}
+  subList={subtitle}
   iconList={skills}
 >
   <p class="text-body-rg">
