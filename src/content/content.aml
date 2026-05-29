@@ -2,11 +2,16 @@
 [.header]
   type: content
   title: Federico Denni
-  subtitle: Creative Technologist
+  [.subtitle]
+    *is a Creative Data Designer
+    *is a Front-end developer
+    *is a Visual and Design System designer
+    *is a Researcher and Teaching Assistant
+  []
   [.skills] 
     *robot
-    *pencil
     *code
+    *pencil
     *edu 
   []
   text: Federico Denni is a small design studio of 183 cm from Italy. His services includes data visualisations, interactive installations and web design with design systems. Open to work from 8am to 8pm every day, excluding weekends.
