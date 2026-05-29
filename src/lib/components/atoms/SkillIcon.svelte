@@ -6,14 +6,17 @@
   import PhGraduationCapBold from "~icons/ph/graduation-cap-bold";
 
   // Riceviamo items, l'indice attivo e la callback
-  let { items = [], activeIndex = 0, onHover } = $props();
+  let { items = [], activeIndex = 0, onHover, onLeave } = $props();
 
+  //icons keys
   const icons = {
     robot: PhRobotBold,
     code: PhCodeBold,
     pencil: PhPencilBold,
     edu: PhGraduationCapBold,
   };
+
+  //ANIMATION
 </script>
 
 <div class="row">
@@ -27,6 +30,7 @@
           ? 'active'
           : ''}"
         onmouseenter={() => onHover(index)}
+        onmouseleave={onLeave}
       >
         <Skill class="app-icon skill-bg" />
         <Skill class="app-icon skill-fg" />
@@ -68,24 +72,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  /* Rotazioni sfalsate organiche */
-  .sticker-wrapper:nth-child(odd) {
-    transform: rotate(-6deg);
-  }
-  .sticker-wrapper:nth-child(even) {
-    transform: rotate(5deg);
-  }
-
-  .sticker-wrapper:hover {
-    transform: scale(1.15) rotate(0deg);
-    z-index: 10;
+    z-index: 1;
   }
 
   .sticker-wrapper.active {
-    transform: scale(1.15) rotate(0deg);
     z-index: 10;
   }
 

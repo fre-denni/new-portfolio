@@ -1,24 +1,33 @@
 <script>
   //@ts-nocheck
-  import { onMount, onDestroy } from "svelte";
   import SkillIcon from "./SkillIcon.svelte";
 
   let { children, header = null, subList = [], iconList = [] } = $props();
 
   let activeIndex = $state(0);
   let interval;
+  let isHovering = $state(false); // Tracciamo se l'utente è sopra un'icona
 
-  // Funzione per l'hover manuale (ferma anche l'animazione automatica!)
+  // Quando l'utente entra con il mouse
   function handleIconHovering(index) {
     activeIndex = index;
-    stopCarousel(); // Se l'utente interagisce, fermiamo il carosello
+    isHovering = true;
+    stopCarousel();
+  }
+
+  // Quando l'utente esce con il mouse
+  function handleIconLeave() {
+    isHovering = false;
+    startCarousel();
   }
 
   function startCarousel() {
-    if (subList.length > 1) {
+    stopCarousel(); // Evita intervalli doppi
+    // Se ci sono più subheader e non stiamo facendo hovering, parte il carosello
+    if (subList.length > 1 && !isHovering) {
       interval = setInterval(() => {
         activeIndex = (activeIndex + 1) % subList.length;
-      }, 2500); // Cambia ogni 2.5 secondi
+      }, 1500);
     }
   }
 
@@ -26,10 +35,21 @@
     if (interval) clearInterval(interval);
   }
 
-  // Facciamo partire il carosello quando il componente viene montato
   $effect(() => {
-    startCarousel();
-    return () => stopCarousel(); // Pulizia quando smontato
+    // Calcoliamo quanto ci mettono le icone ad entrare:
+    // 600ms (animazione) + (numero di icone * 150ms delay) + un po' di buffer
+    const entranceTime = 600 + iconList.length * 150 + 500;
+
+    // Ritardiamo la partenza del carosello per far finire l'animazione CSS
+    const initialDelay = setTimeout(() => {
+      startCarousel();
+    }, entranceTime);
+
+    // Pulizia
+    return () => {
+      clearTimeout(initialDelay);
+      stopCarousel();
+    };
   });
 </script>
 
@@ -41,6 +61,7 @@
           items={iconList}
           {activeIndex}
           onHover={handleIconHovering}
+          onLeave={handleIconLeave}
         />
       {/if}
 
