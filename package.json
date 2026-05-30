@@ -16,6 +16,7 @@
     "vite": "^8.0.10"
   },
   "dependencies": {
+    "animejs": "^4.4.1",
     "archieml": "^0.5.0",
     "p5": "^2.2.3"
   }

@@ -1,83 +1,108 @@
 <script>
   //@ts-nocheck
+  import { onMount, tick } from "svelte";
+  import { animate, createTimeline, stagger, utils, splitText } from "animejs";
+
+  //components importing
   import SkillIcon from "./SkillIcon.svelte";
 
+  //props
   let { children, header = null, subList = [], iconList = [] } = $props();
 
+  //ANIMATIONS
+  let animation;
   let activeIndex = $state(0);
-  let interval;
-  let isHovering = $state(false); // Tracciamo se l'utente è sopra un'icona
 
-  // Quando l'utente entra con il mouse
-  function handleIconHovering(index) {
-    activeIndex = index;
-    isHovering = true;
-    stopCarousel();
-  }
+  //animation elements
+  let pAnimations = $state(null);
+  let hAnimations = $state(null);
+  let subAnimations = $state(null);
 
-  // Quando l'utente esce con il mouse
-  function handleIconLeave() {
-    isHovering = false;
-    startCarousel();
-  }
+  // Tracciamo se l'utente è sopra un'icona
+  let isHovering = $state(false);
 
-  function startCarousel() {
-    stopCarousel(); // Evita intervalli doppi
-    // Se ci sono più subheader e non stiamo facendo hovering, parte il carosello
-    if (subList.length > 1 && !isHovering) {
-      interval = setInterval(() => {
-        activeIndex = (activeIndex + 1) % subList.length;
-      }, 1500);
+  //onMount animations
+  onMount(async () => {
+    await tick();
+    await document.fonts.ready;
+
+    const tl = createTimeline({
+      defaults: { duration: 750, ease: "out(3)" },
+      playbackEase: "linear",
+      debug: true,
+    });
+
+    // 1. Header — parte subito a t=0
+    if (hAnimations) {
+      const split = splitText(hAnimations, { lines: { wrap: "clip" } });
+      tl.add(
+        split.addEffect(({ lines }) =>
+          animate(lines, { y: [{ to: ["200%", "0%"] }], delay: stagger(200) }),
+        ),
+        0,
+      );
     }
-  }
 
-  function stopCarousel() {
-    if (interval) clearInterval(interval);
-  }
+    // 2. Subheader — parte 100ms DOPO la fine del blocco precedente
+    if (subAnimations) {
+      const split = splitText(subAnimations, { lines: { wrap: "clip" } });
+      tl.add(
+        split.addEffect(({ lines }) =>
+          animate(lines, { y: [{ to: ["200%", "0%"] }], delay: stagger(200) }),
+        ),
+        "+=200",
+      );
+    }
 
-  $effect(() => {
-    // Calcoliamo quanto ci mettono le icone ad entrare:
-    // 600ms (animazione) + (numero di icone * 150ms delay) + un po' di buffer
-    const entranceTime = 600 + iconList.length * 150 + 500;
-
-    // Ritardiamo la partenza del carosello per far finire l'animazione CSS
-    const initialDelay = setTimeout(() => {
-      startCarousel();
-    }, entranceTime);
-
-    // Pulizia
-    return () => {
-      clearTimeout(initialDelay);
-      stopCarousel();
-    };
+    // 3. Paragrafo — parte 100ms DOPO la fine del subheader
+    if (pAnimations) {
+      const split = splitText(pAnimations, { lines: { wrap: "clip" } });
+      tl.add(
+        split.addEffect(({ lines }) =>
+          animate(lines, {
+            y: [{ to: ["200%", "0%"] }],
+            delay: stagger(200),
+            onComplete: () => {
+              split.lines.forEach((line) => (line.style.overflow = "visible"));
+            },
+          }),
+        ),
+        "+=300",
+      );
+    }
   });
+
+  //hovering animations
+  $effect(() => {});
 </script>
 
 <div class="grid">
   {#if header}
     <header>
       {#if iconList.length > 0}
-        <SkillIcon
-          items={iconList}
-          {activeIndex}
-          onHover={handleIconHovering}
-          onLeave={handleIconLeave}
-        />
+        <SkillIcon items={iconList} {activeIndex} />
       {/if}
 
-      <span class={subList.length > 0 ? "text-title-smb" : "text-title-rg"}>
+      <span
+        class={subList.length > 0 ? "text-title-smb" : "text-title-rg"}
+        bind:this={hAnimations}
+      >
         {@render header()}
       </span>
 
       {#if subList.length > 0 && subList[activeIndex]}
-        <span class="text-title-rg subheader-text">
+        <span class="text-title-rg subheader-text" bind:this={subAnimations}>
           {subList[activeIndex]}
         </span>
       {/if}
     </header>
   {/if}
 
-  <div class="content" style:grid-row={header ? "2 / span 1" : "1 / span 1"}>
+  <div
+    class="content"
+    style:grid-row={header ? "2 / span 1" : "1 / span 1"}
+    bind:this={pAnimations}
+  >
     {@render children()}
   </div>
 </div>
@@ -124,9 +149,21 @@
     padding: 0 var(--space-3xs-2xs);
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-s-m);
     grid-row: 2 / span 1;
     grid-column: 1 / span 1;
     justify-self: stretch;
+  }
+
+  .content :global(span) {
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .content :global(a span) {
+    display: inline;
+    text-decoration: underline;
+    /* Ensures the clipping wrappers don't cut off the underline */
+    overflow: visible;
+    padding-bottom: 0;
   }
 </style>
