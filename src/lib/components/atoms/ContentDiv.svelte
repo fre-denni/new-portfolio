@@ -24,7 +24,9 @@
   //onMount animations
   onMount(async () => {
     await tick();
-    await document.fonts.ready;
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
 
     const tl = createTimeline({
       defaults: { duration: 750, ease: "out(3)" },
