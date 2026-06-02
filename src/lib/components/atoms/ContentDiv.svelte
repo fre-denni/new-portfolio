@@ -39,7 +39,13 @@
       const split = splitText(hAnimations, { lines: { wrap: "clip" } });
       tl.add(
         split.addEffect(({ lines }) =>
-          animate(lines, { y: [{ to: ["200%", "0%"] }], delay: stagger(200) }),
+          animate(lines, {
+            y: [{ to: ["200%", "0%"] }],
+            rotateZ: [5, 0],
+            easing: "easeOutExpo",
+            duration: 1000,
+            delay: stagger(200),
+          }),
         ),
         0,
       );
@@ -50,9 +56,14 @@
       const split = splitText(subAnimations, { lines: { wrap: "clip" } });
       tl.add(
         split.addEffect(({ lines }) =>
-          animate(lines, { y: [{ to: ["200%", "0%"] }], delay: stagger(200) }),
+          animate(lines, {
+            y: [{ to: ["200%", "0%"] }],
+            rotateZ: [5, 0],
+            easing: "easeOutExpo",
+            delay: stagger(200),
+          }),
         ),
-        "+=200",
+        "+=600",
       );
     }
 
@@ -63,13 +74,14 @@
         split.addEffect(({ lines }) =>
           animate(lines, {
             y: [{ to: ["200%", "0%"] }],
+            easing: "easeOutExpo",
             delay: stagger(200),
             onComplete: () => {
               split.lines.forEach((line) => (line.style.overflow = "visible"));
             },
           }),
         ),
-        "+=300",
+        "+=1000",
       );
     }
   });
@@ -156,7 +168,8 @@
     justify-self: stretch;
   }
 
-  .content :global(span) {
+  .content :global(span),
+  .content :global(p) {
     padding: 0;
     margin-bottom: 0;
   }
