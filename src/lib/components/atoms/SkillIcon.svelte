@@ -4,29 +4,58 @@
   import PhCodeBold from "~icons/ph/code-bold";
   import PhPencilBold from "~icons/ph/pencil-bold";
   import PhGraduationCapBold from "~icons/ph/graduation-cap-bold";
+  //add others as needed
+
+  import { onMount } from "svelte";
 
   // Riceviamo items, l'indice attivo e la callback
   let { items = [], activeIndex = 0, onHover, onLeave } = $props();
 
-  //icons keys
+  //icons keys -- add other icons when they appear
   const icons = {
-    robot: PhRobotBold,
     code: PhCodeBold,
+    robot: PhRobotBold,
     pencil: PhPencilBold,
     edu: PhGraduationCapBold,
   };
 
+  //color keys -- add other colors when new icons are inserted
+  const colors = ["gold", "blue", "liliac", "rust"];
+
+  //randomize order of icons (Fisher-Yates)
+  function shuffle(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  //Assegna random colore ed ordine
+  let itemList = $derived.by(() => {
+    let shuffledIcons = shuffle(items);
+    let shuffledColors = shuffle(colors);
+
+    return shuffledIcons.map((itemName, index) => ({
+      name: itemName,
+      color: shuffledColors[index % shuffledColors.length],
+    }));
+  });
+
   //ANIMATION
+  onMount(async () => {});
+  $effect(() => {});
 </script>
 
 <div class="row">
-  {#each items as item, index}
-    {@const Skill = icons[item]}
+  {#each itemList as { name, color }, index}
+    {@const Skill = icons[name]}
 
     {#if Skill}
       <div
         aria-hidden="true"
-        class="sticker-wrapper icon-{item} {activeIndex === index
+        class="sticker-wrapper icon-{color} {activeIndex === index
           ? 'active'
           : ''}"
         onmouseenter={() => onHover(index)}
@@ -93,31 +122,31 @@
   }
 
   /* COLORS */
-  .icon-robot :global(.skill-bg) {
+  .icon-gold :global(.skill-bg) {
     stroke: var(--icon-bg-gold);
   }
-  .icon-robot :global(.skill-fg) {
+  .icon-gold :global(.skill-fg) {
     color: var(--icon-gold);
   }
 
-  .icon-code :global(.skill-bg) {
+  .icon-blue :global(.skill-bg) {
     stroke: var(--icon-bg-blue);
   }
-  .icon-code :global(.skill-fg) {
+  .icon-blue :global(.skill-fg) {
     color: var(--icon-blue);
   }
 
-  .icon-pencil :global(.skill-bg) {
+  .icon-liliac :global(.skill-bg) {
     stroke: var(--icon-bg-liliac);
   }
-  .icon-pencil :global(.skill-fg) {
+  .icon-liliac :global(.skill-fg) {
     color: var(--icon-liliac);
   }
 
-  .icon-edu :global(.skill-bg) {
+  .icon-rust :global(.skill-bg) {
     stroke: var(--icon-bg-rust);
   }
-  .icon-edu :global(.skill-fg) {
+  .icon-rust :global(.skill-fg) {
     color: var(--icon-rust);
   }
 </style>

@@ -7,6 +7,7 @@
   import SkillIcon from "./SkillIcon.svelte";
 
   //props
+  //aggiungi on hover e on leave per le icone
   let { children, header = null, subList = [], iconList = [] } = $props();
 
   //ANIMATIONS
@@ -74,8 +75,9 @@
         split.addEffect(({ lines }) =>
           animate(lines, {
             y: [{ to: ["200%", "0%"] }],
+            rotateZ: [1, 0],
             easing: "easeOutExpo",
-            delay: stagger(200),
+            delay: stagger(300),
             onComplete: () => {
               split.lines.forEach((line) => (line.style.overflow = "visible"));
             },
